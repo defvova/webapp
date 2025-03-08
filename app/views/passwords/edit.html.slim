@@ -1,0 +1,19 @@
+= render partial: "shared/alert", locals: { classes: "mt-2 w-1/2 mx-auto" }
+.flex.items-center.p-6.flex-col.mt-20
+	.w-sm.grid.gap-6.items-center
+		= link_to "Acme Inc.", root_path, class: "font-medium text-center"
+		= render(Card::WrapperComponent.new) do
+			= render(Card::HeaderComponent.new("text-center")) do
+				= render(Card::TitleComponent.new("text-xl")) do
+					| Update your password
+				= render(Card::DescriptionComponent.new) do
+					| Enter your new password.
+			= render(Card::ContentComponent.new("gap-6 grid")) do
+				= form_with url: password_path(params[:token]), method: :put, class: "grid gap-6" do |f|
+					.grid.gap-2
+						= render(Form::LabelComponent.new(f, :password))
+						= render(Form::InputComponent.new(f, :password_field, :password, required: true, autocomplete: "new-password", placeholder: "Enter new password", maxlength: 50))
+					.grid.gap-2
+						= render(Form::LabelComponent.new(f, :password))
+						= render(Form::InputComponent.new(f, :password_field, :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 50))
+					= f.submit "Save", class: ButtonComponent.variants

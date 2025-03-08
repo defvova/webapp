@@ -1,0 +1,5 @@
+= form_with url: passwords_path, class: "grid gap-6" do |f|
+	.grid.gap-2
+		= render(Form::LabelComponent.new(f, :email))
+		= render(Form::InputComponent.new(f, :email_field, :email, required: true, autofocus: true, autocomplete: "username", placeholder: "E.g; jane@company.com", value: params[:email]))
+	= f.submit "Send me a reset link", class: ButtonComponent.variants

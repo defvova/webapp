@@ -1,0 +1,15 @@
+= turbo_frame_tag dom_id(model), refresh: "morph"
+	= form_with model:, url: signup_url, class: 'grid gap-6' do |f|
+		.grid.gap-2
+			= render(Form::LabelComponent.new(f, :email))
+			= render(Form::InputComponent.new(f, :email_field, :email, required: true, autofocus: true, autocomplete: "username", placeholder: "name@example.com"))
+			= render(Form::ErrorMessageComponent.new(@user, :email))
+		.grid.gap-2
+			= render(Form::LabelComponent.new(f, :password))
+			= render(Form::InputComponent.new(f, :password_field, :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 50))
+			= render(Form::ErrorMessageComponent.new(@user, :password))
+		.grid.gap-2
+			= render(Form::LabelComponent.new(f, :password_confirmation))
+			= render(Form::InputComponent.new(f, :password_field, :password_confirmation, required: true, autocomplete: "current-password", placeholder: "Enter password confirmation", maxlength: 50))
+			= render(Form::ErrorMessageComponent.new(@user, :password_confirmation))
+		= f.submit "Continue", class: ButtonComponent.variants

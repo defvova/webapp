@@ -1,0 +1,15 @@
+- if alert = flash[:alert]
+	= render Alert::WrapperComponent.new({ variant: "error" }, classes) do
+		= render "shared/svg/circle_alert", classes: "w-4 h-4"
+		= render Alert::TitleComponent.new do
+			| Error
+		= render Alert::DescriptionComponent.new do
+			= alert
+
+- if notice = flash[:notice]
+	= render Alert::WrapperComponent.new({ variant: "success" }, classes) do
+		= render "shared/svg/circle_check", classes: "w-4 h-4"
+		= render Alert::TitleComponent.new do
+			| Info
+		= render Alert::DescriptionComponent.new do
+			= notice

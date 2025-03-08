@@ -1,0 +1,36 @@
+.flex.h-full.gap-2
+	.flex.flex-col.w-full.items-center
+		= render partial: "shared/alert", locals: { classes: "mt-2 w-1/2" }
+		.m-auto
+			.w-sm.grid.gap-6.items-center
+				= link_to "Acme Inc.", root_path, class: "font-medium text-center text-success"
+				= render(Card::WrapperComponent.new) do
+					= render(Card::HeaderComponent.new("text-center")) do
+						= render(Card::TitleComponent.new("text-xl")) do
+							| Welcome Back
+						= render(Card::DescriptionComponent.new) do
+							| Sign in with your provider below
+					= render(Card::ContentComponent.new("gap-6 grid")) do
+						= render(ButtonComponent.new("#", { variant: :outline, class: "w-full font-medium" })) do
+							= render "shared/svg/google_icon", classes: "w-4 h-4"
+							| Continue with Google
+						.relative
+							.absolute.inset-0.flex.items-center
+								span.w-full.border-t
+							.relative.flex.justify-center.text-xs.uppercase
+								span.bg-background.px-2.text-muted-foreground
+									| Or continue with
+						= render partial: "form", locals: { model: @user }
+						.text-center.text-sm
+							| Don't have an account?
+							=< link_to "Sign up", signup_path, class: "underline underline-offset-4 hover:text-primary"
+	.relative.h-screen.flex.flex-col.p-10.text-white.dark:border-r.w-1/3
+		.absolute.inset-2.rounded-md.bg-zinc-900
+		.relative.flex.items-center.text-lg.font-medium
+			| Acme Inc
+		.relative.mt-auto
+			blockquote.space-y-2
+				p.text-lg
+					| This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.
+			footer.text-sm
+				| Sofia Davis
