@@ -55,7 +55,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem "rdoc", "~> 6.11"
+  gem "rdoc", "~> 6.13"
 end
 
 group :development do
